@@ -1,4 +1,4 @@
-const search = require("./helpers/API")
+const search = require("./helpers/API");
 
 async function main() {
   search.search();
