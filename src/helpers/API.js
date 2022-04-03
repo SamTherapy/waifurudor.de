@@ -1,24 +1,48 @@
+const { post, get } = require("request");
 const request = require("request");
 const parseConfig = require("./config");
 const downloadFromBooru = require("./download");
 
+let configFile = "./config.json";
+
 function search() {
-  let configFile = "./config.json";
+  parseConfig.readConfig(configFile, (err, config) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    //Get list of posts for the tag(s)
+    request(
+      `https://${config.booru}.donmai.us/posts.json?tags=${config.tags}&z=1`,
+      { json: true },
+      (err, res, body) => {
+        if (err) {
+          return console.log(err);
+        }
+        const randPost = Math.floor(Math.random() * body.length);
+        const postID = body[randPost].id;
+        getPost(postID);
+      }
+    );
+  });
+}
+function getPost(postID) {
   parseConfig.readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
       return;
     }
     request(
-      `https://${config.booru}.donmai.us/posts/6.json`,
+      `https://${config.booru}.donmai.us/posts/${postID}.json`,
       { json: true },
       (err, res, body) => {
         if (err) {
           return console.log(err);
         }
-        console.log(body)
-        downloadFromBooru.downloadFromBooru(body.large_file_url, `./img/${body.id}.png`)
-
+        downloadFromBooru.downloadFromBooru(
+          body.large_file_url,
+          `./img/${body.id}.png`
+        );
       }
     );
   });
