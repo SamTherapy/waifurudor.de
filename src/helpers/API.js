@@ -48,10 +48,10 @@ function getPost(postID) {
         if (err) {
           return console.log(err);
         }
-        downloadFromBooru.downloadFromBooru(
-          body.file_url,
-          "./src/public/assets/waifu.png"
-        );
+        downloadFromBooru
+          .downloadFromBooru(body.file_url, "./src/public/assets/waifu.png")
+          .then(console.log)
+          .catch(console.error);
       }
     );
   });

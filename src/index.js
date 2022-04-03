@@ -1,33 +1,22 @@
 const search = require("./helpers/API");
-const serveStatic = require("serve-static");
 const express = require("express");
-const path = require('path');
-const router = express.Router();
-
+const path = require("path");
 
 const app = express();
 const port = 3000;
 
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+app.use("/assets", express.static(path.join(__dirname, "/public/assets")));
 
-const options = {
-  headers: {
-    'Cache-Control': 'no-cache',
-  }
-};
-
-//app.use(express.static('./src/public'));
-app.use("/", router)
-router.get("/", (req, res) => {
-  res.send(main());
+app.get("/", (req, res) => {
+  res.set("Cache-Control", "no-store");
+  main();
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
-
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-async function main() {
+function main() {
   search.search();
 }

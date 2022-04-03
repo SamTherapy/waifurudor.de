@@ -1,7 +1,7 @@
 const fs = require("fs");
 const client = require("https");
 
-function downloadFromBooru(url, filepath) {
+async function downloadFromBooru(url, filepath) {
   return new Promise((resolve, reject) => {
     client.get(url, (res) => {
       if (res.statusCode === 200) {
