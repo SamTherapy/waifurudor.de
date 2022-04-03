@@ -1,10 +1,11 @@
-const request = require("request");
+const got = require("got");
+
 const parseConfig = require("./config");
 const downloadFromBooru = require("./download");
 
 let configFile = "./config.json";
 
-function search() {
+async function search() {
   parseConfig.readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
@@ -13,24 +14,30 @@ function search() {
 
     if (config.rating === "safe") {
       let queryUrl = `https://${config.booru}.donmai.us/posts.json?tags=${config.tags}+rating:${config.rating}&z=1`;
-      request(queryUrl, { json: true }, (err, res, body) => {
-        if (err) {
-          return console.log(err);
-        }
-        const randPost = Math.floor(Math.random() * body.length);
-        const postID = body[randPost].id;
-        getPost(postID);
-      });
+      got(queryUrl)
+        .then((response) => {
+          const jsonRes = JSON.parse(response.body);
+          const randPost = Math.floor(Math.random() * jsonRes.length);
+          const postID = jsonRes[randPost].id;
+
+          getPost(postID);
+        })
+        .catch((error) => {
+          console.error("error", error);
+        });
     } else {
       let queryUrl = `https://${config.booru}.donmai.us/posts.json?tags=${config.tags}&z=1`;
-      request(queryUrl, { json: true }, (err, res, body) => {
-        if (err) {
-          return console.log(err);
-        }
-        const randPost = Math.floor(Math.random() * body.length);
-        const postID = body[randPost].id;
-        getPost(postID);
-      });
+      got(queryUrl)
+        .then((response) => {
+          const jsonRes = JSON.parse(response.body);
+          const randPost = Math.floor(Math.random() * jsonRes.length);
+          const postID = jsonRes[randPost].id;
+
+          getPost(postID);
+        })
+        .catch((error) => {
+          console.error("error", error);
+        });
     }
   });
 }
@@ -41,19 +48,19 @@ function getPost(postID) {
       console.log(err);
       return;
     }
-    request(
-      `https://${config.booru}.donmai.us/posts/${postID}.json`,
-      { json: true },
-      (err, res, body) => {
-        if (err) {
-          return console.log(err);
-        }
+    got(`https://${config.booru}.donmai.us/posts/${postID}.json`)
+      .then((response) => {
+        let jsonRes = JSON.parse(response.body);
         (async () => {
-          await downloadFromBooru
-            .downloadFromBooru(body.file_url, "./src/public/assets/waifu.png")
+          await downloadFromBooru.downloadFromBooru(
+            jsonRes.file_url,
+            "./src/public/assets/waifu.png"
+          );
         })();
-      }
-    );
+      })
+      .catch((error) => {
+        console.error("Cannot display waifu: ", error);
+      });
   });
 }
 

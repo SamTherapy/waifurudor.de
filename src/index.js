@@ -18,5 +18,7 @@ app.listen(port, () => {
 });
 
 function main() {
-  search.search();
+  (async () => {
+    await search.search();
+  })();
 }
