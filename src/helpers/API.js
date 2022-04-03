@@ -1,5 +1,4 @@
 const got = require("got");
-
 const parseConfig = require("./config");
 const downloadFromBooru = require("./download");
 
