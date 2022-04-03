@@ -4,7 +4,7 @@ const downloadFromBooru = require("./download");
 
 let configFile = "./config.json";
 
-async function search() {
+function search() {
   parseConfig.readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
