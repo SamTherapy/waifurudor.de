@@ -1,23 +1,28 @@
 const search = require("./helpers/API");
-var serveStatic = require("serve-static");
+const serveStatic = require("serve-static");
 const express = require("express");
+const path = require('path');
+const router = express.Router();
+
 
 const app = express();
 const port = 3000;
 
-app.use(
-  serveStatic("src/public", {
-    maxAge: "1d",
-  })
-);
-app.get("/", (req, res) => {
-  main();
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+const options = {
+  headers: {
+    'Cache-Control': 'no-cache',
+  }
+};
+
+//app.use(express.static('./src/public'));
+app.use("/", router)
+router.get("/", (req, res) => {
+  res.send(main());
 });
-function doCache(res, durationSecs) {
-  res.set({
-    "Cache-Control": "max-age=" + durationSecs,
-  });
-}
+
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
@@ -26,4 +31,3 @@ app.listen(port, () => {
 async function main() {
   search.search();
 }
-main();
