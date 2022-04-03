@@ -1,4 +1,3 @@
-const { post, get } = require("request");
 const request = require("request");
 const parseConfig = require("./config");
 const downloadFromBooru = require("./download");
