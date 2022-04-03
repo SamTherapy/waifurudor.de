@@ -1,11 +1,11 @@
-const got = require("got");
-const parseConfig = require("./config");
-const downloadFromBooru = require("./download");
+import got from "got";
+import { readConfig } from "./config.js";
+import downloadFromBooru from "./download.js";
 
 let configFile = "./config.json";
 
-function search() {
-  parseConfig.readConfig(configFile, (err, config) => {
+export function search() {
+  readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
       return;
@@ -42,7 +42,7 @@ function search() {
 }
 
 function getPost(postID) {
-  parseConfig.readConfig(configFile, (err, config) => {
+  readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
       return;
@@ -51,7 +51,7 @@ function getPost(postID) {
       .then((response) => {
         let jsonRes = JSON.parse(response.body);
         (async () => {
-          await downloadFromBooru.downloadFromBooru(
+          await downloadFromBooru(
             jsonRes.file_url,
             "./src/public/assets/waifu.png"
           );
@@ -62,5 +62,3 @@ function getPost(postID) {
       });
   });
 }
-
-module.exports = { search };

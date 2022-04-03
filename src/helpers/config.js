@@ -1,7 +1,7 @@
-const fs = require("fs");
+import { readFile } from "fs";
 
-function readConfig(configPath, callBack) {
-  fs.readFile(configPath, (err, configData) => {
+export function readConfig(configPath, callBack) {
+  readFile(configPath, (err, configData) => {
     if (err) {
       return callBack && callBack(err);
     }
@@ -13,5 +13,3 @@ function readConfig(configPath, callBack) {
     }
   });
 }
-
-module.exports = { readConfig };

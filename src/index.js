@@ -1,16 +1,15 @@
-const search = require("./helpers/API");
-const express = require("express");
-const path = require("path");
+import { search } from "./helpers/API.js";
+import express from "express";
 
 const app = express();
 const port = 3000;
 
-app.use("/assets", express.static(path.join(__dirname, "/public/assets")));
+app.use("/assets", express.static("src/public/assets"));
 
 app.get("/", (req, res) => {
   res.set("Cache-Control", "no-store");
   main();
-  res.sendFile(path.join(__dirname, "/public/index.html"));
+  res.sendFile("src/public/index.html", { root: "." });
 });
 
 app.listen(port, () => {
@@ -18,5 +17,5 @@ app.listen(port, () => {
 });
 
 function main() {
-  search.search();
+  search();
 }

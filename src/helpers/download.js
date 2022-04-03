@@ -1,12 +1,10 @@
-const fs = require("fs");
-const { promisify } = require("util");
-const got = require("got");
-const stream = require("stream");
+import got from "got";
+import { createWriteStream } from "fs";
+import { promisify } from "util";
+import { pipeline as _pipeline } from "stream";
 
-const pipeline = promisify(stream.pipeline);
+const pipeline = promisify(_pipeline);
 
-async function downloadFromBooru(url, filepath) {
-  await pipeline(got.stream(url), fs.createWriteStream(filepath));
+export default async function downloadFromBooru(url, filepath) {
+  await pipeline(got.stream(url), createWriteStream(filepath));
 }
-
-module.exports = { downloadFromBooru };
