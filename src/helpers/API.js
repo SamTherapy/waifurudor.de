@@ -1,5 +1,6 @@
 const request = require("request");
 const parseConfig = require("./config");
+const downloadFromBooru = require("./download");
 
 function search() {
   let configFile = "./config.json";
@@ -15,11 +16,9 @@ function search() {
         if (err) {
           return console.log(err);
         }
+        console.log(body)
+        downloadFromBooru.downloadFromBooru(body.large_file_url, `./img/${body.id}.png`)
 
-        console.log(body.id);
-        console.log(body.created_at);
-        console.log(body.rating);
-        console.log(body.large_file_url);
       }
     );
   });
