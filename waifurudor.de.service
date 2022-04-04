@@ -1,0 +1,14 @@
+[Unit]
+Description=waifurudor.de
+
+[Service]
+ExecStart=npm start
+Restart=always
+User=none
+Group=nogroup
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/whatever/user/waifurudor.de/src/
+
+[Install]
+WantedBy=multi-user.target
