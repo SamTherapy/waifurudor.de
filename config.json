@@ -1,5 +1,5 @@
 {
-  "booru": "danbooru",
-  "tags": ["iwakura_lain"],
+  "booru": ["danbooru", "safebooru", "konan"],
+  "tags": ["onodera_kosaki", "-underwear"],
   "rating": "safe"
 }

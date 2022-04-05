@@ -15,5 +15,5 @@ app.listen(port, () => {
 });
 
 function main() {
-  search();
+  getFromBooru();
 }
