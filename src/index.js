@@ -6,14 +6,10 @@ const port = 3000;
 
 app.get("/", (req, res) => {
   res.set("Cache-Control", "no-store");
-  main();
+  getFromBooru();
   res.sendFile("src/public/assets/waifu.png", { root: "." });
 });
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-function main() {
-  getFromBooru();
-}
