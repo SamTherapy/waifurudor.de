@@ -11,9 +11,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/waifu", (req, res) => {
-  const tags = req.query.tags.split(',');
+  const tags = req.query.tags.split(",");
   userDefinedTags(tags);
-  res.sendFile("src/public/assets/waifu.png", { root: "." })
+  res.sendFile("src/public/assets/waifu.png", { root: "." });
 });
 
 app.listen(port, () => {

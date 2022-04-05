@@ -2,10 +2,9 @@ import { readConfig } from "./config.js";
 import downloadFromBooru from "./download.js";
 import { search } from "booru";
 
-let configFile = "./config.json";
+const configFile = "./config.json";
 
 export function getFromBooru() {
-  
   readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
