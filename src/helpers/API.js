@@ -1,64 +1,34 @@
-import got from "got";
 import { readConfig } from "./config.js";
 import downloadFromBooru from "./download.js";
+import { search } from "booru";
 
 let configFile = "./config.json";
 
-export function search() {
+export function getFromBooru() {
   readConfig(configFile, (err, config) => {
     if (err) {
       console.log(err);
       return;
     }
-
     if (config.rating === "safe") {
-      let queryUrl = `https://${config.booru}.donmai.us/posts.json?tags=${config.tags}+rating:${config.rating}&z=1`;
-      got(queryUrl)
-        .then((response) => {
-          const jsonRes = JSON.parse(response.body);
-          const randPost = Math.floor(Math.random() * jsonRes.length);
-          const postID = jsonRes[randPost].id;
-
-          getPost(postID);
-        })
-        .catch((error) => {
-          console.error("error", error);
-        });
-    } else {
-      let queryUrl = `https://${config.booru}.donmai.us/posts.json?tags=${config.tags}&z=1`;
-      got(queryUrl)
-        .then((response) => {
-          const jsonRes = JSON.parse(response.body);
-          const randPost = Math.floor(Math.random() * jsonRes.length);
-          const postID = jsonRes[randPost].id;
-
-          getPost(postID);
-        })
-        .catch((error) => {
-          console.error("error", error);
-        });
+      config.tags.push("rating:safe");
     }
-  });
-}
 
-function getPost(postID) {
-  readConfig(configFile, (err, config) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    got(`https://${config.booru}.donmai.us/posts/${postID}.json`)
-      .then((response) => {
-        let jsonRes = JSON.parse(response.body);
-        (async () => {
-          await downloadFromBooru(
-            jsonRes.file_url,
-            "./src/public/assets/waifu.png"
-          );
-        })();
-      })
-      .catch((error) => {
-        console.error("Cannot display waifu: ", error);
-      });
+    const randBooru = Math.floor(Math.random() * config.booru.length);
+    search(config.booru[randBooru], config.tags, {
+      limit: 1,
+      random: true,
+    }).then((response) => {
+      if (response.length === 0) {
+        console.log("Error searching for posts.", Error("No posts found."));
+        return;
+      }
+
+      const post = response[0];
+
+      (async () => {
+        await downloadFromBooru(post.fileUrl, "./src/public/assets/waifu.png");
+      })();
+    });
   });
 }

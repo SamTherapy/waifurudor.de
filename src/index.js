@@ -1,4 +1,4 @@
-import { search } from "./helpers/API.js";
+import { getFromBooru } from "./helpers/API.js";
 import express from "express";
 
 const app = express();
@@ -15,5 +15,5 @@ app.listen(port, () => {
 });
 
 function main() {
-  search();
+  getFromBooru();
 }
