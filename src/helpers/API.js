@@ -10,10 +10,17 @@ export function getFromBooru() {
       console.log(err);
       return;
     }
+
+    //append safe rating to the tags if so desired
     if (config.rating === "safe") {
       config.tags.push("rating:safe");
     }
 
+    //Select a random index from the array and append the waifu to the tags
+    const randWaifu = Math.floor(Math.random() * config.characterTags.length);
+    config.tags.push(config.characterTags[randWaifu]);
+
+    //Select a random index from the array to pick which booru is being queried
     const randBooru = Math.floor(Math.random() * config.booru.length);
     search(config.booru[randBooru], config.tags, {
       limit: 1,
