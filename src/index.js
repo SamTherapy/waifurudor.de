@@ -15,10 +15,6 @@ app.get("/", (req, res) => {
   res.sendFile("src/public/assets/waifu.png", { root: "." });
 });
 
-app.get("/waifu", (req, res) => {
-  res.sendFile("src/public/assets/waifu.png", { root: "." });
-});
-
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
