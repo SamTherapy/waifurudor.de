@@ -6,13 +6,16 @@ const port = 3000;
 
 app.get("/", (req, res) => {
   res.set("Cache-Control", "no-store");
-  getFromBooru();
+  if (!req.query.tags) {
+    getFromBooru();
+  } else {
+    const tags = req.query.tags.split(",");
+    userDefinedTags(tags);
+  }
   res.sendFile("src/public/assets/waifu.png", { root: "." });
 });
 
 app.get("/waifu", (req, res) => {
-  const tags = req.query.tags.split(",");
-  userDefinedTags(tags);
   res.sendFile("src/public/assets/waifu.png", { root: "." });
 });
 
