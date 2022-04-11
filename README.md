@@ -2,6 +2,12 @@
 
 It's like foxrudor.de for anime girls, but worse
 
+## How to use
+
+Open the web site up and see the predefined anime girls, or define your own tags like:
+
+https://waifurudor.de/?tags=tohsaka_rin,-feet,-underwear,rating:safe
+
 ## Server Install
 
 Clone the repo to where ever you will be hosting this and run the following command to install the dependencies.
