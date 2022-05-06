@@ -1,6 +1,7 @@
 {
   "booru": ["danbooru", "safebooru"],
-  "characterTags": ["onodera_kosaki", "tohsaka_rin", "izumi_konata"],
-  "tags": ["-underwear"],
+  "characterTags": ["onodera_kosaki", "tohsaka_rin"],
+  "miscTags": "-underwear",
+  "tags": [""],
   "rating": "safe"
 }
