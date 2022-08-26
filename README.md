@@ -16,7 +16,7 @@ Clone the repo to where ever you will be hosting this and run the following comm
 yarn
 ```
 
-Now that the dependencies are taken care of you can verify it runs with `npm start` in the root directory of the project. If it tells you it is listening on a port you're probably good to go.
+Now that the dependencies are taken care of you can verify it runs with `yarn build && yarn start` in the root directory of the project. If it tells you it is listening on a port you're probably good to go.
 
 ## Running as a service
 
