@@ -1,14 +1,14 @@
 [Unit]
-Description=waifurudor.de
+Description=waifurudor.de - Anime as a Service (AaaS)
 
 [Service]
-ExecStart=npm start
+ExecStart=yarn start
 Restart=always
 User=none
 Group=nogroup
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
-WorkingDirectory=/whatever/user/waifurudor.de/src/
+WorkingDirectory=/whatever/user/waifurudor.de/
 
 [Install]
 WantedBy=multi-user.target

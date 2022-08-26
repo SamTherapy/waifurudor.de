@@ -12,11 +12,11 @@ https://waifurudor.de/?tags=tohsaka_rin,-feet,-underwear,rating:safe
 
 Clone the repo to where ever you will be hosting this and run the following command to install the dependencies.
 
-```sh
-yarn
+```
+npm install
 ```
 
-Now that the dependencies are taken care of you can verify it runs with `yarn build && yarn start` in the root directory of the project. If it tells you it is listening on a port you're probably good to go.
+Now that the dependencies are taken care of you can verify it runs with `npm start` in the root directory of the project. If it tells you it is listening on a port you're probably good to go.
 
 ## Running as a service
 
