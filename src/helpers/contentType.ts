@@ -7,7 +7,7 @@
  */
 export default function ContentType(extension: string): string {
   switch (
-    extension.toLowerCase()?.replace("jpg", "jpeg").replace("svg", "svg+xml")
+    extension?.toLowerCase()?.replace("jpg", "jpeg")?.replace("svg", "svg+xml")
   ) {
     case "aces":
     case "avci":

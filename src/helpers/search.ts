@@ -13,7 +13,10 @@ export default function Search(_req: Request, res: Response) {
     .then(async (post) => {
       const imageURL = post[0]?.fileUrl as string;
 
-      const type = imageURL.split(".").pop() as string;
+      const type = imageURL?.split(".")?.pop() as string;
+      if (type == null) {
+        throw "No results found";
+      }
       res.setHeader("content-type", ContentType(type));
 
       const img = await fetch(imageURL)
