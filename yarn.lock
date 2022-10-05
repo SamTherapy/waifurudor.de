@@ -138,13 +138,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"booru@npm:2.6.2":
-  version: 2.6.2
-  resolution: "booru@npm:2.6.2"
+"booru@npm:2.6.3":
+  version: 2.6.3
+  resolution: "booru@npm:2.6.3"
   dependencies:
     fast-xml-parser: ^4.0.9
-    undici: ^5.7.0
-  checksum: 0bc20c3fad2bbc6b61d719d054a93c4e379a2e0f6593fd86029f703185d4cc7bac8a3da2da1d7dd0e34e746887530a1a8c83fa2b8487415e266deacb473770ac
+    undici: ^5.10.0
+  checksum: c8613060742d4d9891e94c128c989331cf889e3a99ef9917b7ee159d1bca8453aaef6bf4049e9f8dfad1ca94df26ef7254c9279c635cc3e73831b164190ce51e
+  languageName: node
+  linkType: hard
+
+"busboy@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "busboy@npm:1.6.0"
+  dependencies:
+    streamsearch: ^1.1.0
+  checksum: 32801e2c0164e12106bf236291a00795c3c4e4b709ae02132883fe8478ba2ae23743b11c5735a0aae8afe65ac4b6ca4568b91f0d9fed1fdbc32ede824a73746e
   languageName: node
   linkType: hard
 
@@ -600,6 +609,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"streamsearch@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "streamsearch@npm:1.1.0"
+  checksum: 1cce16cea8405d7a233d32ca5e00a00169cc0e19fbc02aa839959985f267335d435c07f96e5e0edd0eadc6d39c98d5435fb5bbbdefc62c41834eadc5622ad942
+  languageName: node
+  linkType: hard
+
 "strnum@npm:^1.0.5":
   version: 1.0.5
   resolution: "strnum@npm:1.0.5"
@@ -644,10 +660,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.7.0":
-  version: 5.9.1
-  resolution: "undici@npm:5.9.1"
-  checksum: 8acabbac8e18943ff822574f831d03d65e697e66ef486a679763f7778f37b28980caf7097ededf4017b58c099809e8efd8509a6688f60638360fb86ef47a59df
+"undici@npm:^5.10.0":
+  version: 5.11.0
+  resolution: "undici@npm:5.11.0"
+  dependencies:
+    busboy: ^1.6.0
+  checksum: 20669ef4023d24a75e81ed8142829f525f16af14d61f833b5f19cfc6bed7c706adde343a190d764dcceb227eba3211222d2b194010462a2ca221a7da0487f563
   languageName: node
   linkType: hard
 
@@ -678,7 +696,7 @@ __metadata:
   dependencies:
     "@types/express": 4.17.13
     "@types/morgan": 1.9.3
-    booru: 2.6.2
+    booru: 2.6.3
     express: ">=5.0.0-beta.1"
     helmet: 6.0.0
     morgan: 1.10.0
