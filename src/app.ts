@@ -9,7 +9,7 @@ const app = express();
 
 app.use(helmet());
 app.use(morgan("combined"));
-app.set("trust proxy", "loopback"); 
+app.set("trust proxy", "loopback");
 // app.use(morgan(process.env.NODE_ENV === "production" ? "tiny" : "dev"));
 
 app.use(express.json());
