@@ -19,7 +19,7 @@ export default async function Search(_req: Request, res: Response) {
 
   const type = imageURL?.split(".")?.pop() as string;
   if (type == null) {
-    res.status(404).json({ msg: "No results found"})
+    res.status(404).json({ msg: "No results found" });
   }
   res.setHeader("content-type", ContentType(type));
 
