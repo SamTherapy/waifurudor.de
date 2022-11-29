@@ -11,7 +11,7 @@ specifiers:
   eslint-config-prettier: 8.5.0
   eslint-plugin-prettier: 4.2.1
   express: '>=5.0.0-beta.1'
-  helmet: 6.0.0
+  helmet: 6.0.1
   morgan: 1.10.0
   nodemon: 2.0.20
   prettier: 2.8.0
@@ -21,7 +21,7 @@ specifiers:
 dependencies:
   booru: 2.6.3
   express: 5.0.0-beta.1
-  helmet: 6.0.0
+  helmet: 6.0.1
   morgan: 1.10.0
 
 devDependencies:
@@ -1018,8 +1018,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /helmet/6.0.0:
-    resolution: {integrity: sha512-FO9RpR1wNJepH/GbLPQVtkE2eESglXL641p7SdyoT4LngHFJcZheHMoyUcjCZF4qpuMMO1u5q6RK0l9Ux8JBcg==}
+  /helmet/6.0.1:
+    resolution: {integrity: sha512-8wo+VdQhTMVBMCITYZaGTbE4lvlthelPYSvoyNvk4RECTmrVjMerp9RfUOQXZWLvCcAn1pKj7ZRxK4lI9Alrcw==}
     engines: {node: '>=14.0.0'}
     dev: false
 
