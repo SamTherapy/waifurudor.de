@@ -8,8 +8,8 @@ dependencies:
     specifier: '>=5.0.0-beta.1'
     version: 5.0.0-beta.1
   helmet:
-    specifier: 6.1.5
-    version: 6.1.5
+    specifier: 6.2.0
+    version: 6.2.0
   morgan:
     specifier: 1.10.0
     version: 1.10.0
@@ -1044,8 +1044,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /helmet@6.1.5:
-    resolution: {integrity: sha512-UgAvdoG0BhF9vcCh/j0bWtElo2ZHHk6OzC98NLCM6zK03DEVSM0vUAtT7iR+oTo2Mi6sGelAH3tL6B/uUWxV4g==}
+  /helmet@6.2.0:
+    resolution: {integrity: sha512-DWlwuXLLqbrIOltR6tFQXShj/+7Cyp0gLi6uAb8qMdFh/YBBFbKSgQ6nbXmScYd8emMctuthmgIa7tUfo9Rtyg==}
     engines: {node: '>=14.0.0'}
     dev: false
 
