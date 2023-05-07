@@ -2,7 +2,7 @@
   "dependencies": {
     "booru": "2.6.3",
     "express": ">=5.0.0-beta.1",
-    "helmet": "6.2.0",
+    "helmet": "7.0.0",
     "morgan": "1.10.0"
   },
   "name": "waifurudor.de",
