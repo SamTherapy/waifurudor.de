@@ -1,0 +1,10 @@
+{
+  "fmt": {
+    "semiColons": false
+  },
+
+  "imports": {
+    "booru/": "https://deno.land/x/booru@v3.0.0/",
+    "hono/": "https://deno.land/x/hono@v3.4.1/"
+  }
+}

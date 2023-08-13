@@ -50,7 +50,7 @@ export default function ContentType(extension: string): string {
     case "tiff":
     case "tiff-fx":
     case "wmf":
-      return `image/${extension}`;
+      return `image/${extension}`
 
     case "1d-interleaved-parityfec":
     case "3gpp":
@@ -101,8 +101,8 @@ export default function ContentType(extension: string): string {
     case "vc2":
     case "vp8":
     case "vp9":
-      return `video/${extension}`;
+      return `video/${extension}`
     default:
-      return "";
+      throw new Error(`Unknown extension: ${extension}`)
   }
 }

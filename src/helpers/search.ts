@@ -1,38 +1,43 @@
-import { Request, Response } from "express";
-import * as booru from "booru";
-import ContentType from "./contentType.js";
+import * as booru from "booru/src/index.ts"
+import { Context } from "hono/mod.ts"
+import ContentType from "./contentType.ts"
+import { SearchQuery } from "./types.ts"
 
 /**
  * Searches the booru for an image to return.
- * @param _req Express request (not used)
- * @param res Node Response
+ * @param c: Context object from hono
+ * @param query: The SearchQuery
  */
-export default async function Search(_req: Request, res: Response) {
+export default async function Search(
+  c: Context,
+  query: SearchQuery,
+): Promise<Response> {
   const posts = await booru
-    .search(res.locals.booru, res.locals.tags, { random: true, limit: 1 })
+    .search(query.site, query.tags, { random: true, limit: 1 })
     .catch((err: Error) => {
-      res.status(400).json({ msg: "WaaS Error", error: err });
-      console.error(err);
-    });
+      console.error(err)
+      return c.json({ error: err.message }, 400)
+    })
 
-  const imageURL = (posts as booru.SearchResults)[0]?.fileUrl as string;
+  const imageURL = (posts as booru.SearchResults)[0]?.fileUrl as string
 
-  const type = imageURL?.split(".")?.pop() as string;
+  const type = imageURL?.split(".")?.pop() as string
   if (type == null) {
-    res.status(404).json({ msg: "No results found" });
+    return c.json({ error: "No results found" }, 404)
   }
-  res.setHeader("content-type", ContentType(type));
+
+  c.header("content-type", ContentType(type))
 
   const img = await fetch(imageURL)
-    // Turn the image into an ArrayBuffer (which is also a Promise)
-    .then(async (fetchRes) => {
-      return fetchRes?.arrayBuffer();
+    // Turn the image into an ArrayBuffer
+    .then((fetchRes) => {
+      return fetchRes?.arrayBuffer()
     })
     .catch((err: Error) => {
-      console.error(err);
-      res.status(500).json({ msg: "Wife machine broke", error: err });
-    });
+      console.error(err)
+      return c.json({ error: err.message }, 500)
+    })
 
   // deepcode ignore XSS: nmp
-  res.status(200).end(Buffer.from(img as ArrayBuffer), "binary");
+  return c.body(img as ArrayBuffer)
 }
