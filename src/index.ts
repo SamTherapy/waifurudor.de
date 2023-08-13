@@ -9,7 +9,7 @@ app.onError((err, c) => {
   return c.json({ error: err.message }, 500)
 })
 
-app.get("/favicon.ico", (c) => c.body(null, 200))
+app.get("/favicon.ico", (c) => c.body(null, 204))
 
 // Politely tell robots to go away
 app.get("/robots.txt", (c) => c.text("User-agent: *\nDisallow: /"))
