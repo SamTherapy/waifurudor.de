@@ -1,5 +1,5 @@
 import * as booru from "booru/src/index.ts"
-import { Context } from "hono/mod.ts"
+import { Context } from "npm:hono"
 import ContentType from "./contentType.ts"
 import { SearchQuery } from "./types.ts"
 

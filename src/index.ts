@@ -1,8 +1,11 @@
-import { Hono } from "hono/mod.ts"
+import { Hono } from "npm:hono"
+import { logger } from 'npm:hono/logger'
 import { SearchQuery } from "./helpers/types.ts"
 import Search from "./helpers/search.ts"
 
 const app = new Hono()
+
+app.use('*', logger())
 
 app.onError((err, c) => {
   console.error(err)
