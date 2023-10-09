@@ -28,7 +28,12 @@ export default async function Search(
 
   c.header("content-type", ContentType(type))
 
-  const img = await fetch(imageURL, {headers: {"User-Agent": "waifurudorde/1.0.0 (+https://git.froth.zone/sam/waifurudor.de)"}})
+  const img = await fetch(imageURL, {
+    headers: {
+      "User-Agent":
+        "waifurudorde/1.0.0 (+https://git.froth.zone/sam/waifurudor.de)",
+    },
+  })
     // Turn the image into an ArrayBuffer
     .then((fetchRes) => {
       return fetchRes?.arrayBuffer()

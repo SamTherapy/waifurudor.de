@@ -28,9 +28,8 @@ app.get("/robots.txt", (c) => c.text("User-agent: *\nDisallow: /"))
 app.all("/", (c) => {
   const query: SearchQuery = {
     site: c.req.query("booru") ?? "safebooru",
-    tags: c.req.query("tags") ?? c.req.header("Host") === "rint.osaka"
-      ? "tohsaka_rin"
-      : "",
+    tags: c.req.query("tags") ??
+      (c.req.header("Host") === "rint.osaka" ? "tohsaka_rin" : ""),
   }
   customLogger(`Host: ${c.req.header("Host")}`)
 
