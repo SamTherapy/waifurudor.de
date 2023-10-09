@@ -17,7 +17,7 @@ app.get("/favicon.ico", (c) => c.body(null, 204))
 // Politely tell robots to go away
 app.get("/robots.txt", (c) => c.text("User-agent: *\nDisallow: /"))
 
-app.all("*", (c) => {
+app.all("/", (c) => {
   const query: SearchQuery = {
     site: c.req.query("booru") ?? "safebooru",
     tags: c.req.query("tags") ?? c.req.header("Host") === "rint.osaka" ? "tohsaka_rin" : "",
