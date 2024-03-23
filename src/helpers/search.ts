@@ -21,12 +21,13 @@ export default async function Search(
 
   const imageURL = (posts as booru.SearchResults)[0]?.fileUrl as string
 
-  const type = imageURL?.split(".")?.pop() as string
+  const type = imageURL?.split(".")?.pop() 
   if (type == null) {
     return c.json({ error: "No results found" }, 404)
   }
 
   c.header("content-type", ContentType(type))
+  c.header("Access-Control-Allow-Origin", "*")
 
   const img = await fetch(imageURL, {
     headers: {
