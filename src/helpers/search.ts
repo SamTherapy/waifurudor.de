@@ -25,8 +25,8 @@ export default async function Search(
   if (type == null) {
     return c.json({ error: "No results found" }, 404)
   }
-
-  c.header("content-type", ContentType(type))
+  
+  c.header("Content-Type", ContentType(type))
   c.header("Access-Control-Allow-Origin", "*")
 
   const img = await fetch(imageURL, {

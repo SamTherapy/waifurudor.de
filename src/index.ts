@@ -31,8 +31,6 @@ app.all("/", (c) => {
     tags: c.req.query("tags")?.split(",") ??
       (c.req.header("Host") === "rint.osaka" ? "tohsaka_rin" : ""),
   }
-  customLogger(`Tags: ${query.tags}`)
-  customLogger(`Host: ${c.req.header("Host")}`)
 
   return Search(c, query)
 })

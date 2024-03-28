@@ -2,12 +2,26 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "npm:booru": "npm:booru@2.6.5",
       "npm:fast-xml-parser": "npm:fast-xml-parser@4.2.7",
       "npm:hono": "npm:hono@3.7.5"
     },
     "npm": {
+      "booru@2.6.5": {
+        "integrity": "sha512-GzkI3LDGcLEhxaRAhyyJQe6gzb2VAkFHvRJzdUbdKuNYTrkGmv8HYuxICwp00Vzwm7UG+KnPT9xogSMWyQ6/pA==",
+        "dependencies": {
+          "fast-xml-parser": "fast-xml-parser@4.3.6",
+          "undici": "undici@6.10.2"
+        }
+      },
       "fast-xml-parser@4.2.7": {
         "integrity": "sha512-J8r6BriSLO1uj2miOk1NW0YVm8AGOOu3Si2HQp/cSmo6EA4m3fcwu2WKjJ4RK9wMLBtg69y1kS8baDiQBR41Ig==",
+        "dependencies": {
+          "strnum": "strnum@1.0.5"
+        }
+      },
+      "fast-xml-parser@4.3.6": {
+        "integrity": "sha512-M2SovcRxD4+vC493Uc2GZVcZaj66CCJhWurC4viynVSTvrpErCShNcDz1lAho6n9REQKvL/ll4A4/fw6Y9z8nw==",
         "dependencies": {
           "strnum": "strnum@1.0.5"
         }
@@ -18,6 +32,10 @@
       },
       "strnum@1.0.5": {
         "integrity": "sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==",
+        "dependencies": {}
+      },
+      "undici@6.10.2": {
+        "integrity": "sha512-HcVuBy7ACaDejIMdwCzAvO22OsiE6ir6ziTIr9kAE0vB+PheVe29ZvRN8p7FXCO2uZHTjEoUs5bPiFpuc/hwwQ==",
         "dependencies": {}
       }
     }
@@ -65,6 +83,20 @@
     "https://deno.land/x/booru@v3.0.2/src/structures/Site.ts": "b896cff9805db0edabf8648cdaefef6cdd7eb952271ce2f287ae4859d0b581ae",
     "https://deno.land/x/booru@v3.0.2/src/structures/SiteApi.ts": "2dfeae2bfc9c484a513db9c9b00d851713ef9fdffed2bde0ce028cd96ba283e0",
     "https://deno.land/x/booru@v3.0.2/src/structures/SiteInfo.ts": "e1e928d77ce50bbe54a15d0d71bec69502c86f8a582c28c46fc784bc5e1559c4",
+    "https://deno.land/x/booru@v3.1.0/src/Constants.ts": "582282889c2ae634765f969b334c9ca535161fbd153ddf61b8edd3d6e685cb89",
+    "https://deno.land/x/booru@v3.1.0/src/Utils.ts": "f84b4d692ba25f190051f4f16e85d306b95542741a2a49b1381917510b52b581",
+    "https://deno.land/x/booru@v3.1.0/src/boorus/Booru.ts": "a551b1bce2662da41b5b5762805566f75179b69d411dac559edca11b97e6770b",
+    "https://deno.land/x/booru@v3.1.0/src/boorus/Derpibooru.ts": "1c07f30eefe64e8d72f6fbddd5ff0916508dee11fb83603d262bda0f32a8c233",
+    "https://deno.land/x/booru@v3.1.0/src/boorus/XmlBooru.ts": "a8f731bbe9074ab45aa0d5767d093cfaa7a24f8334e50d43f1df09a1beeca016",
+    "https://deno.land/x/booru@v3.1.0/src/index.ts": "6054f6e8ab0ac95db23eb9505b8c3c749553b4d1238f273a9a2763a7c002edfc",
+    "https://deno.land/x/booru@v3.1.0/src/sites.json": "c142a5fcef102f49202b8874ecfb3da6deab2e8b0342be7b3fc681cc7b20f872",
+    "https://deno.land/x/booru@v3.1.0/src/structures/InternalSearchParameters.ts": "2c8085170a549c960451e4df565a149c5ce409da6b939b5f8a8fb5bdeb1e6149",
+    "https://deno.land/x/booru@v3.1.0/src/structures/Post.ts": "2dc2b94ebbc3f33c5429b9ac6a257346744d885cf548a85a06a05dce7bf5036c",
+    "https://deno.land/x/booru@v3.1.0/src/structures/SearchParameters.ts": "b465c8a50b24471b5dcf2b48815426d1eb78e82395d6551d587b21f64879fbff",
+    "https://deno.land/x/booru@v3.1.0/src/structures/SearchResults.ts": "832fc6c97d796a7ede7e25ccca846d8377e298a57f7ab7f7ff4fa5873f99e2a4",
+    "https://deno.land/x/booru@v3.1.0/src/structures/Site.ts": "b896cff9805db0edabf8648cdaefef6cdd7eb952271ce2f287ae4859d0b581ae",
+    "https://deno.land/x/booru@v3.1.0/src/structures/SiteApi.ts": "2dfeae2bfc9c484a513db9c9b00d851713ef9fdffed2bde0ce028cd96ba283e0",
+    "https://deno.land/x/booru@v3.1.0/src/structures/SiteInfo.ts": "e1e928d77ce50bbe54a15d0d71bec69502c86f8a582c28c46fc784bc5e1559c4",
     "https://deno.land/x/hono@v3.4.1/client/client.ts": "7a819af2aa9aabc746add4d01715fa37f83676fdf1b63fba1bbcd655b2d066a5",
     "https://deno.land/x/hono@v3.4.1/client/index.ts": "3ff4cf246f3543f827a85a2c84d66a025ac350ee927613629bda47e854bfb7ba",
     "https://deno.land/x/hono@v3.4.1/client/utils.ts": "053273c002963b549d38268a1b423ac8ca211a8028bdab1ed0b781a62aa5e661",

@@ -4,6 +4,6 @@
   },
 
   "imports": {
-    "booru/": "https://deno.land/x/booru@v3.0.2/"
+    "booru/": "https://deno.land/x/booru@v3.1.0/"
   }
 }
